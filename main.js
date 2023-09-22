@@ -36,6 +36,7 @@ app.get('/api/data', (req, res) => {
         walletInfo.weeks = actives[1]
         walletInfo.month = actives[2]
         walletInfo.first_tx = data[0].ibt
+        walletInfo.last_tx = data[0].lbt
     }
     res.json(walletInfo)
 })
