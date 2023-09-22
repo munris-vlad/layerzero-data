@@ -41,5 +41,5 @@ app.get('/api/data', (req, res) => {
 })
 
 
-const job = new CronJob('0 0 * * *', () => loadData(), null, true, 'UTC')
+const job = new CronJob('10 0 * * *', () => loadData(), null, true, 'UTC')
 job.start()
