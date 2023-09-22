@@ -9,8 +9,7 @@ let combinedData
 
 async function loadData() {
     const file1Data = JSON.parse(fs.readFileSync('./files/database1.json', 'utf8'))
-    const file2Data = JSON.parse(fs.readFileSync('./files/database2.json', 'utf8'))
-    combinedData = [...file1Data['data']['get_execution']['execution_succeeded']['data'], ...file2Data['data']['get_execution']['execution_succeeded']['data']]
+    combinedData = file1Data['data']['get_execution']['execution_succeeded']['data']
 }
 
 await loadData()
