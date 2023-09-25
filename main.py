@@ -26,7 +26,7 @@ logger.remove()
 logger.add(stderr, format="<white>{time:HH:mm:ss}</white> | <level>{level: <8}</level> | <cyan>{line}</cyan> - <white>{message}</white>")
 
 WALLETS = []
-QUERY1 = 2681615
+QUERY1 = 3051366
 QUERY2 =  2492847
 
 
@@ -213,31 +213,6 @@ def update_database() -> None:
             logger.error(f'Ошибка обновления базы данных: {error}')
     
     with open(file_data1, 'w') as file:
-        json.dump(response.json(), file)
-
-    #----------------------------------------------
-
-    # logger.info(f'Скачиваю вторую базу данных')
-
-    with open(file_query3, 'r') as file:
-        payload = json.load(file)
-
-    execution_id = get_execution_id(session, QUERY2)
-    logger.info(f'ID #2 базы данных №{QUERY2}: {execution_id}')
-    payload['variables']['execution_id'] = execution_id
-
-    while True:
-        try:
-            response = session.post('https://app-api.dune.com/v1/graphql', json=payload)
-            if (response.status_code == 200):
-                logger.success(f'База данных №{QUERY2} успешно скачана!')
-                break
-            else:
-                logger.error(f'Ошибка обновления базы данных: {response.text} | Cтатус запроса: {response.status_code}')
-        except Exception as error:
-            logger.error(f'Ошибка обновления базы данных: {error}')
-    
-    with open(file_data2, 'w') as file:
         json.dump(response.json(), file)
 
     logger.success(f'Готово!\n')

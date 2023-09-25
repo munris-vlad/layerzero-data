@@ -1,7 +1,7 @@
 {
     "operationName": "GetResult",
     "variables": {
-        "query_id": 2463827,
+        "query_id": 3051366,
         "parameters": [],
         "can_refresh": true
     },
